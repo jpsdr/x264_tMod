@@ -525,7 +525,6 @@ case $host_os in
         ;;
     darwin*)
         SYS="MACOSX"
-        CFLAGS="$CFLAGS -falign-loops=16"
         libm="-lm"
         if [ "$pic" = "no" ]; then
             cc_check "" -mdynamic-no-pic && CFLAGS="$CFLAGS -mdynamic-no-pic"
@@ -769,7 +768,7 @@ if [ $compiler != ICL ]; then
     fi
 fi
 
-if [ $shared = yes -a \( $ARCH = "X86_64" -o $ARCH = "PPC" -o $ARCH = "ALPHA" -o $ARCH = "ARM" -o $ARCH = "IA64" -o $ARCH = "PARISC" -o $ARCH = "MIPS" \) ] ; then
+if [ $shared = yes -a \( $ARCH = "X86_64" -o $ARCH = "PPC" -o $ARCH = "ALPHA" -o $ARCH = "ARM" -o $ARCH = "IA64" -o $ARCH = "PARISC" -o $ARCH = "MIPS" -o $ARCH = "AARCH64" \) ] ; then
     pic="yes"
 fi
 
@@ -1209,7 +1208,6 @@ if [ "$debug" != "yes" -a "$gprof" != "yes" ]; then
 fi
 
 if [ "$strip" = "yes" ]; then
-    CFLAGS="$CFLAGS -s"
     LDFLAGS="$LDFLAGS -s"
 fi
 
